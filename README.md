@@ -47,11 +47,11 @@ forge test
 ## Node.js API
 
 ```js
-import * as SparkRecentParticipants from '@filecoin-station/spark-recent-participants'
+import * as SparkEvaluationsRecentParticipants from '@filecoin-station/spark-evaluations-recent-participants'
 
 console.log({
-  abi: SparkRecentParticipants.ABI,
-  address: SparkRecentParticipants.ADDRESS
+  abi: SparkEvaluationsRecentParticipants.ABI,
+  address: SparkEvaluationsRecentParticipants.ADDRESS
 })
 ```
 
