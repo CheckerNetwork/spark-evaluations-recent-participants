@@ -5,4 +5,4 @@ export const ABI = JSON.parse(await fs.readFile(
   fileURLToPath(new URL('./Abi.json', import.meta.url))
 ))
 
-export const ADDRESS = '0xcb3e3291a298a44224bc3bafd04957e9feed5767'
+export const ADDRESS = '0xffac3d46e0adfd7806c454b23c3c74d95e09bb02'

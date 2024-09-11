@@ -2,7 +2,7 @@
 
 Smart contract exposing recent participant ids in the Spark network.
 
-Contract deployed at `0xcb3e3291a298a44224bc3bafd04957e9feed5767`.
+Contract deployed at `0xffac3d46e0adfd7806c454b23c3c74d95e09bb02`.
 
 ## API
 
