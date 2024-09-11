@@ -9,72 +9,72 @@ contract RecentParticipantsTest is Test {
         RecentParticipants rp = new RecentParticipants(address(this));
 
         // Set initial values
-        uint[] memory ids = new uint[](3);
-        ids[0] = 1;
-        ids[1] = 2;
-        ids[2] = 3;
-        rp.set(0, ids);
+        address[] memory participants = new address[](3);
+        participants[0] = address(0x1);
+        participants[1] = address(0x2);
+        participants[2] = address(0x3);
+        rp.set(0, participants);
 
-        assertEq(rp.daysRing(0, 0), 1);
-        assertEq(rp.daysRing(0, 1), 2);
-        assertEq(rp.daysRing(0, 2), 3);
+        assertEq(rp.daysRing(0, 0), address(0x1));
+        assertEq(rp.daysRing(0, 1), address(0x2));
+        assertEq(rp.daysRing(0, 2), address(0x3));
         vm.expectRevert();
         rp.daysRing(1, 0);
         vm.expectRevert();
         rp.daysRing(2, 0);
 
         // Add new values and test ring
-        ids[0] = 4;
-        ids[1] = 5;
-        ids[2] = 6;
-        rp.set(4, ids);
-        assertEq(rp.daysRing(0, 0), 1);
-        assertEq(rp.daysRing(0, 1), 2);
-        assertEq(rp.daysRing(0, 2), 3);
-        assertEq(rp.daysRing(1, 0), 4);
-        assertEq(rp.daysRing(1, 1), 5);
-        assertEq(rp.daysRing(1, 2), 6);
+        participants[0] = address(0x4);
+        participants[1] = address(0x5);
+        participants[2] = address(0x6);
+        rp.set(4, participants);
+        assertEq(rp.daysRing(0, 0), address(0x1));
+        assertEq(rp.daysRing(0, 1), address(0x2));
+        assertEq(rp.daysRing(0, 2), address(0x3));
+        assertEq(rp.daysRing(1, 0), address(0x4));
+        assertEq(rp.daysRing(1, 1), address(0x5));
+        assertEq(rp.daysRing(1, 2), address(0x6));
         vm.expectRevert();
         rp.daysRing(2, 0);
 
         // Overwrite values
-        ids[0] = 7;
-        ids[1] = 8;
-        ids[2] = 9;
-        rp.set(4, ids);
-        assertEq(rp.daysRing(0, 0), 1);
-        assertEq(rp.daysRing(0, 1), 2);
-        assertEq(rp.daysRing(0, 2), 3);
-        assertEq(rp.daysRing(1, 0), 7);
-        assertEq(rp.daysRing(1, 1), 8);
-        assertEq(rp.daysRing(1, 2), 9);
+        participants[0] = address(0x7);
+        participants[1] = address(0x8);
+        participants[2] = address(0x9);
+        rp.set(4, participants);
+        assertEq(rp.daysRing(0, 0), address(0x1));
+        assertEq(rp.daysRing(0, 1), address(0x2));
+        assertEq(rp.daysRing(0, 2), address(0x3));
+        assertEq(rp.daysRing(1, 0), address(0x7));
+        assertEq(rp.daysRing(1, 1), address(0x8));
+        assertEq(rp.daysRing(1, 2), address(0x9));
         vm.expectRevert();
         rp.daysRing(2, 0);
 
         // Auth
         RecentParticipants rp2 = new RecentParticipants(address(0x1));
         vm.expectRevert("Unauthorized");
-        rp2.set(0, ids);
+        rp2.set(0, participants);
     }
 
     function test_Get() public {
         RecentParticipants rp = new RecentParticipants(address(this));
-        uint[] memory ids = new uint[](3);
-        ids[0] = 1;
-        ids[1] = 2;
-        ids[2] = 3;
-        rp.set(0, ids);
-        ids[0] = 4;
-        ids[1] = 5;
-        ids[2] = 6;
-        rp.set(4, ids);
-        uint[] memory participants = rp.get();
-        assertEq(participants.length, 6);
-        assertEq(participants[0], 1);
-        assertEq(participants[1], 2);
-        assertEq(participants[2], 3);
-        assertEq(participants[3], 4);
-        assertEq(participants[4], 5);
-        assertEq(participants[5], 6);
+        address[] memory participants = new address[](3);
+        participants[0] = address(0x1);
+        participants[1] = address(0x2);
+        participants[2] = address(0x3);
+        rp.set(0, participants);
+        participants[0] = address(0x4);
+        participants[1] = address(0x5);
+        participants[2] = address(0x6);
+        rp.set(4, participants);
+        address[] memory allParticipants = rp.get();
+        assertEq(allParticipants.length, 6);
+        assertEq(allParticipants[0], address(0x1));
+        assertEq(allParticipants[1], address(0x2));
+        assertEq(allParticipants[2], address(0x3));
+        assertEq(allParticipants[3], address(0x4));
+        assertEq(allParticipants[4], address(0x5));
+        assertEq(allParticipants[5], address(0x6));
     }
 }

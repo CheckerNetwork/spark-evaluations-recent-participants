@@ -8,11 +8,11 @@ Contract deployed at `0xcb3e3291a298a44224bc3bafd04957e9feed5767`.
 
 ### constructor (address owner)
 
-### .get() public view (uint[])
+### .get() public view (address[])
 
 Get all recent participants.
 
-### .set(uint date, uint[] participants) public
+### .set(uint date, address[] participants) public
 
 Owner only. Set participants for given date (0-30).
 
