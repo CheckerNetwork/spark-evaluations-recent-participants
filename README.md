@@ -1,5 +1,7 @@
 # spark-evaluations: Recent Participants
 
+Smart contract exposing recent participant ids in the Spark network.
+
 Contract deployed at `0xcb3e3291a298a44224bc3bafd04957e9feed5767`.
 
 ## API
@@ -12,7 +14,7 @@ Get all recent participants.
 
 ### .set(uint date, uint[] participants) public
 
-Onwer only. Set participants for given date (0-30).
+Owner only. Set participants for given date (0-30).
 
 ## Development
 
