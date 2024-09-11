@@ -1,7 +1,7 @@
 {
   "name": "@filecoin-station/spark-evaluations-recent-participants",
   "license": "(Apache-2.0 AND MIT)",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "repository": "filecoin-station/spark-evaluations-recent-participants",
   "type": "module",
   "types": "index.d.ts",
