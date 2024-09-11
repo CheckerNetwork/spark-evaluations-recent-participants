@@ -44,6 +44,18 @@ git submodule update --init --recursive
 forge test
 ```
 
+## Node.js API
+
+```js
+import * as SparkRecentParticipants from '@filecoin-station/spark-recent-participants'
+
+console.log({
+  abi: SparkRecentParticipants.ABI,
+  address: SparkRecentParticipants.ADDRESS
+})
+```
+
+
 ## Deployment
 
 The deployment relies on contract bindings generated in the `/contract-bindings`
